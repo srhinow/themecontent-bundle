@@ -1,0 +1,52 @@
+{
+  "name": "srhinow/themecontent-bundle",
+  "description": "für themes benötigte Inhalte nicht mehr als Fakeseiten sondern sauber getrennt in Contao verwalten.",
+  "keywords": ["contao", "theme", "content", "layout", "elements"],
+  "type": "contao-bundle",
+  "homepage": "https://github.com/srhinow/themecontent-bundle",
+  "license": "GPL-3.0+",
+  "authors":[
+    {
+      "name":"Sven Rhinow",
+      "homepage":"https://www.sr-tag.de",
+      "role":"Developer"
+    }
+  ],
+  "support":{
+    "email": "kservice@sr-tag.de",
+    "issues":"https://github.com/srhinow/themecontent-bundle/issues",
+    "source":"https://github.com/srhinow/themecontent-bundle"
+  },
+  "require": {
+    "php": ">=7.1",
+    "contao/core-bundle": "^4.4",
+    "menatwork/contao-multicolumnwizard":"^3.3",
+    "codefog/tags-bundle":"^2.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.3",
+    "contao/manager-plugin": "^2.0",
+    "php-http/guzzle6-adapter": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Srhinow\\ThemecontentBundle\\": "src/"
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ],
+    "exclude-from-classmap": [
+      "src/Resources/contao/config/",
+      "src/Resources/contao/languages/",
+      "src/Resources/contao/templates/"
+    ]
+  },
+  "extra": {
+    "contao-manager-plugin": "Srhinow\\ThemecontentBundle\\ContaoManager\\Plugin"
+  },
+  "contao": {
+    "sources": {
+      "": "system/modules/themecontent-bundle"
+    }
+  }
+}
