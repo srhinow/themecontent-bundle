@@ -73,7 +73,7 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_theme_section']['theme_section_article'],
                 'href'                => 'table=tl_theme_section_article',
-                'icon'                => 'bundles/srhinowthemecontent/assets/icons/column_single.png',
+                'icon'                => 'bundles/srhinowthemecontent/icons/combo_boxes.png',
 //                'button_callback'     => array('tl_theme', 'editCss')
             ),
             'editheader' => array
@@ -650,7 +650,7 @@ class tl_theme_section extends \Backend
         if ($varValue == '')
         {
             $autoAlias = true;
-            $varValue = standardize(\StringUtil::restoreBasicEntities($dc->activeRecord->name));
+            $varValue = standardize(\StringUtil::restoreBasicEntities($dc->activeRecord->title));
         }
 
         $objAlias = $this->Database->prepare("SELECT id FROM tl_theme_section WHERE id=? OR alias=?")

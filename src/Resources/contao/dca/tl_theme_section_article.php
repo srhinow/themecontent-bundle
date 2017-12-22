@@ -63,6 +63,13 @@ $GLOBALS['TL_DCA']['tl_theme_section_article'] = array
         ),
         'global_operations' => array
         (
+            'theme_section' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_theme_section_article']['back_to_sectione_overview'],
+                'href'                => 'do=theme_content&amp;table=',
+                'icon'                => 'back.svg',
+//                'button_callback'     => array('tl_theme', 'editCss')
+            ),
             'toggleNodes' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['MSC']['toggleAll'],
@@ -147,7 +154,7 @@ $GLOBALS['TL_DCA']['tl_theme_section_article'] = array
     'palettes' => array
     (
         '__selector__'                => array('protected'),
-        'default'                     => '{title_legend},title,alias,author;{layout_legend},inColumn,keywords;{teaser_legend:hide},teaserCssID,showTeaser,teaser;{syndication_legend},printable;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{publish_legend},published,start,stop'
+        'default'                     => '{title_legend},title,alias;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{publish_legend},published'
     ),
 
     // Subpalettes
