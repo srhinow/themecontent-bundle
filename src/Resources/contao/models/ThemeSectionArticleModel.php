@@ -10,7 +10,7 @@
  */
 
 
-class LedCategoriesModel extends \Contao\Model
+class ThemeSectionArticleModel extends \Contao\Model
 {
     /**
      * Table name

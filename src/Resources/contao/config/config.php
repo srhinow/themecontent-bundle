@@ -1,12 +1,10 @@
 <?php
 /**
- * Created by ledproducts-bundle.
+ * Created by themecontent-bundle.
  * Developer: Sven Rhinow (sven@sr-tag.de)
- * Date: 07.12.17
+ * Date: 22.12.17
  */
 
-$GLOBALS['LED']['MODULE_RELPATH'] = "system/modules/ledproducts-bundle";
-$GLOBALS['LED']['PROPERTIES']['ID'] = 1;
 
 
 /**
@@ -16,7 +14,7 @@ $GLOBALS['LED']['PROPERTIES']['ID'] = 1;
  */
 array_insert($GLOBALS['BE_MOD']['design'], 1, array
 (
-    'teaser_manager' => array
+    'theme_content' => array
     (
         'tables'      => array('tl_theme_section', 'tl_theme_section_article', 'tl_content'),
         'table'       => array('TableWizard', 'importTable'),
