@@ -14,29 +14,21 @@ $GLOBALS['LED']['PROPERTIES']['ID'] = 1;
  * BACK END MODULES
  * -------------------------------------------------------------------------
  */
-array_insert($GLOBALS['BE_MOD'], 1, array(
-        'led' => array
-        (
-            'led_products' => array (
-                'tables' => array('tl_led_series','tl_led_categories','tl_led_serie_categories','tl_led_serie_articles'),
-            ),
-//            'agape_properties' => array (
-//                'tables' => array('tl_agape_properties'),
-//                'callback' => 'ModuleApageProperties',
-//            )
-        )
+array_insert($GLOBALS['BE_MOD']['design'], 1, array
+(
+    'teaser_manager' => array
+    (
+        'tables'      => array('tl_theme_section', 'tl_theme_section_article', 'tl_content'),
+        'table'       => array('TableWizard', 'importTable'),
+        'list'        => array('ListWizard', 'importList')
     )
-);
+));
 
 /**
- * Frontend modules
+ * Add permissions
  */
-$GLOBALS['FE_MOD']['led_products_fe'] = array
-(
-    'fe_led_series' => 'ModuleLedSeriesList',
-    'fe_led_serie_articles' => 'ModuleLedSerieArticleList',
-    'fe_led_serie_article_details' => 'ModuleLedSerieArticleDetails',
-);
+$GLOBALS['TL_PERMISSIONS'][] = 'teasermanagers';
+$GLOBALS['TL_PERMISSIONS'][] = 'teasermanagerp';
 
 /** Hooks */
 //$GLOBALS['TL_HOOKS']['generateBreadcrumb'][] = array('LedHooks', 'ledGenerateBreadcrumb');
