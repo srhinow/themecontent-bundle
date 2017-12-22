@@ -184,8 +184,7 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         ),
         'jumpTo' => array
         (
-            'sql'                     => "int(10) unsigned NOT NULL default '0'",
-            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+            'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
         'redirectBack' => array
         (
@@ -290,12 +289,10 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         'layout' => array
         (
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
-            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
         'mobileLayout' => array
         (
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
-            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
         'includeCache' => array
         (
