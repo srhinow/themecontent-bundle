@@ -97,3 +97,37 @@ $GLOBALS['TL_LANG']['tl_theme_section_article']['delete']['0'] = "Serien-Artikel
 $GLOBALS['TL_LANG']['tl_theme_section_article']['delete']['1'] = "Serien-Artikel ID %s löschen";
 $GLOBALS['TL_LANG']['tl_theme_section_article']['toggle']['0'] = "aktivieren/ deaktivieren";
 $GLOBALS['TL_LANG']['tl_theme_section_article']['toggle']['1'] = "Den Eintrag aktivieren bzw. deaktivieren";
+
+/**
+ * -------- CTS-Filds --------------
+ */
+$strName = 'tl_theme_section_article';
+
+/**
+ * Fields
+ */
+$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetxs']      = array('Grid-Offset - Extra kleine Geräte', 'Smartphones (<768px).');
+$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetsm']      = array('Grid-Offset - Kleine Geräte Tablets', 'Tablets (≥768px).');
+$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetmd']      = array('Grid-Offset - Mittlere Geräte Desktops/Tabelts', 'Desktop/Tablets (≥992px).');
+$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetlg']      = array('Grid-Offset - Große Geräte Desktops', 'Desktops (≥1200px).');
+$GLOBALS['TL_LANG'][$strName]['ctsgridclassxs']       = array('Grid-Klasse - Extra kleine Geräte', 'Smartphones (<768px).');
+$GLOBALS['TL_LANG'][$strName]['ctsgridclasssm']       = array('Grid-Klasse - Kleine Geräte Tablets', 'Tablets (≥768px).');
+$GLOBALS['TL_LANG'][$strName]['ctsgridclassmd']       = array('Grid-Klasse - Mittlere Geräte Desktops/Tabelts', 'Desktop/Tablets (≥992px).');
+$GLOBALS['TL_LANG'][$strName]['ctsgridclasslg']       = array('Grid-Klasse - Große Geräte Desktops', 'Desktops (≥1200px).');
+$GLOBALS['TL_LANG'][$strName]['ctsmargintop']       = array('Margin - Äußerer Abstand oben', 'Bitte wählen Sie den äußeren Abstand oben aus.');
+$GLOBALS['TL_LANG'][$strName]['ctsmarginbottom']    = array('Margin - Äußerer Abstand unten', 'Bitte wählen Sie den äußeren Abstand unten aus.');
+$GLOBALS['TL_LANG'][$strName]['ctspaddingtop']       = array('Padding - Innerer Abstand oben', 'Bitte wählen Sie den inneren Abstand oben aus.');
+$GLOBALS['TL_LANG'][$strName]['ctspaddingbottom']    = array('Padding - Innerer Abstand unten', 'Bitte wählen Sie den inneren Abstand unten aus.');
+$GLOBALS['TL_LANG'][$strName]['ctsbordertop']      = array('Rahmen - Oben', 'Diese Farben definieren Sie im Theme Designer.');
+$GLOBALS['TL_LANG'][$strName]['ctsborderbottom']      = array('Rahmen - Unten', 'Diese Farben definieren Sie im Theme Designer.');
+$GLOBALS['TL_LANG'][$strName]['ctsarticlebg']      = array('Hintergrundfarbe', 'Diese Farben definieren Sie im Theme Designer.');
+
+
+
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG'][$strName]['grid_legend']        = 'Grid-Einstellungen. <strong>Bitte die Dokumentation zum Theme beachten</strong>';
+$GLOBALS['TL_LANG'][$strName]['gridoffset_legend']        = 'Offset-Einstellungen. <strong>Bitte die Dokumentation zum Theme beachten</strong>';
+$GLOBALS['TL_LANG'][$strName]['abstand_legend']        = 'Äußere und Innere Abstände. <strong>Bitte die Dokumentation zum Theme beachten</strong>';
+$GLOBALS['TL_LANG'][$strName]['border_legend']        = 'Rahmen und Hintergrundfarbe.';

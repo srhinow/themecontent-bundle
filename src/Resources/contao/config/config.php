@@ -25,8 +25,8 @@ array_insert($GLOBALS['BE_MOD']['design'], 1, array
 /**
  * Add permissions
  */
-$GLOBALS['TL_PERMISSIONS'][] = 'teasermanagers';
-$GLOBALS['TL_PERMISSIONS'][] = 'teasermanagerp';
+$GLOBALS['TL_PERMISSIONS'][] = 'themecontents';
+$GLOBALS['TL_PERMISSIONS'][] = 'themecontentp';
 
 /** Hooks */
-//$GLOBALS['TL_HOOKS']['generateBreadcrumb'][] = array('LedHooks', 'ledGenerateBreadcrumb');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('srhinow_themecontent.listener.insert_tags', 'onReplaceInsertTags');

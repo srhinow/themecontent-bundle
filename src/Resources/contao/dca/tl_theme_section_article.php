@@ -14,7 +14,6 @@
  */
 $this->loadDataContainer('tl_theme_section');
 
-
 /**
  * Table tl_theme_section_article
  */
@@ -33,6 +32,8 @@ $GLOBALS['TL_DCA']['tl_theme_section_article'] = array
         'onload_callback' => array
         (
             array('tl_theme_section_article', 'checkPermission'),
+//            array('tl_theme_section_article', 'addCustomLayoutSectionReferences'),
+            array('tl_theme_section', 'addBreadcrumb')
         ),
         'sql' => array
         (
@@ -351,7 +352,177 @@ $GLOBALS['TL_DCA']['tl_theme_section_article'] = array
     )
 );
 
+/* CTS-Fields for CTS-Contao-theme-Modules */
+if(class_exists('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper'))
+{
+    $strName = 'tl_theme_section_article';
 
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsarticlebg'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsarticlebg'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsbordertop'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsbordertop'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsborderbottom'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsborderbottom'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridoffsetxs'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetxs'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridoffsetsm'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetsm'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridoffsetmd'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetmd'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridoffsetlg'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridoffsetlg'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridclassxs'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridclassxs'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridclasssm'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridclasssm'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridclassmd'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridclassmd'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsgridclasslg'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsgridclasslg'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsmargintop'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsmargintop'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctsmarginbottom'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctsmarginbottom'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctspaddingtop'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctspaddingtop'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+
+    $GLOBALS['TL_DCA'][$strName]['fields']['ctspaddingbottom'] = array
+    (
+        'label'                   => &$GLOBALS['TL_LANG'][$strName]['ctspaddingbottom'],
+        'default'                 => '',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'eval'                    => array('includeBlankOption' => true, 'tl_class' => 'w50'),
+        'options_callback'        => array('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper', 'getOptionsByField'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    );
+}
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *

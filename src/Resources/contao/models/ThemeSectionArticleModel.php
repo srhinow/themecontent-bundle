@@ -5,18 +5,18 @@
  *
  * Copyright (c) 2017 Sven Rhinow
  *
- * @package agape
+ * @package themecontent-bundle
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
+namespace Srhinow;
 
-
-class ThemeSectionArticleModel extends \Contao\Model
+class ThemeSectionArticleModel extends \Model
 {
     /**
      * Table name
      * @var string
      */
-    protected static $strTable = 'tl_led_categories';
+    protected static $strTable = 'tl_theme_section_article';
 
     /**
      * Find published news items by their parent ID and ID or alias
@@ -26,7 +26,7 @@ class ThemeSectionArticleModel extends \Contao\Model
      *
      * @return \Model|null The AgapeCategoriesModel or null if there are no category
      */
-    public static function findCategoryByIdOrAlias($varId, array $arrOptions=array())
+    public static function findThemeArticleByIdOrAlias($varId, array $arrOptions=array())
     {
         $t = static::$strTable;
 
@@ -41,7 +41,7 @@ class ThemeSectionArticleModel extends \Contao\Model
      * @param array $arrOptions
      * @return \Model\Collection|null|static
      */
-    public static function findCategories($intLimit=0, $intOffset=0, array $filter=array(), array $arrOptions=array())
+    public static function findThemeArticle($intLimit=0, $intOffset=0, array $filter=array(), array $arrOptions=array())
     {
         $t = static::$strTable;
         $arrColumns = (count($filter) > 0)? $filter : null;

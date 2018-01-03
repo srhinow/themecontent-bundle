@@ -1,0 +1,6 @@
+services:
+    srhinow_themecontent.listener.insert_tags:
+        class: Srhinow\ThemecontentBundle\EventListener\InsertTagsListener
+        arguments:
+            - "@contao.framework"
+        public: true

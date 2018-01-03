@@ -8,6 +8,11 @@
  * @license    LGPL
  */
 
+/**
+ * Load class tl_page
+ */
+$this->loadDataContainer('tl_page');
+
 
 /**
  * Table tl_teaser
@@ -47,10 +52,11 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
     (
         'sorting' => array
         (
-            'mode'                    => 1,
-            'fields'                  => array('title'),
-            'flag'                    => 1,
-            'panelLayout'             => 'filter;search,limit'
+            'mode'                    => 5,
+            'icon'                    => 'pagemounts.svg',
+//            'fields'                  => array('title'),
+//            'flag'                    => 1,
+            'panelLayout'             => 'filter;search'
         ),
         'label' => array
         (
@@ -74,7 +80,7 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_theme_section']['theme_section_article'],
                 'href'                => 'table=tl_theme_section_article',
                 'icon'                => 'bundles/srhinowthemecontent/icons/combo_boxes.png',
-//                'button_callback'     => array('tl_theme', 'editCss')
+                'button_callback'     => array('tl_theme_section', 'editArticles')
             ),
             'editheader' => array
             (
@@ -441,7 +447,7 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
     )
 );
 
-class tl_theme_section extends \Backend
+class tl_theme_section extends Backend
 {
     /**
      * Import the back end user object
@@ -600,6 +606,26 @@ class tl_theme_section extends \Backend
         return $this->User->canEditFieldsOf('tl_theme_section') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
+    /**
+     * Generate an "edit articles" button and return it as string
+     *
+     * @param array  $row
+     * @param string $href
+     * @param string $label
+     * @param string $title
+     * @param string $icon
+     *
+     * @return string
+     */
+    public function editArticles($row, $href, $label, $title, $icon)
+    {
+        if (!$this->User->hasAccess('article', 'modules'))
+        {
+            return '';
+        }
+
+        return  '<a href="' . $this->addToUrl($href.'&amp;pn='.$row['id']) . '" title="'.StringUtil::specialchars($title).'">'.Image::getHtml($icon, $label).'</a> ';
+    }
 
     /**
      * Return the copy archive button
@@ -693,5 +719,109 @@ class tl_theme_section extends \Backend
 
         $this->Database->prepare("UPDATE tl_teaser SET dateAdded=? WHERE id=?")
             ->execute($time, $dc->id);
+    }
+
+    /**
+     * Add the breadcrumb menu
+     */
+    public function addBreadcrumb()
+    {
+        self::addSectionBreadcrumb();
+    }
+
+    /**
+     * Add a breadcrumb menu to the page tree
+     *
+     * @param string $strKey
+     *
+     * @throws AccessDeniedException
+     * @throws \RuntimeException
+     */
+    public static function addSectionBreadcrumb($strKey='tl_theme_section_note')
+    {
+
+        /** @var AttributeBagInterface $objSession */
+        $objSession = \System::getContainer()->get('session')->getBag('contao_backend');
+
+        // Set a new node
+        if (isset($_GET['pn']))
+        {
+            // Check the path (thanks to Arnaud Buchoux)
+            if (\Validator::isInsecurePath(\Input::get('pn', true)))
+            {
+                throw new \RuntimeException('Insecure path ' . \Input::get('pn', true));
+            }
+
+            $objSession->set($strKey, \Input::get('pn', true));
+            \Controller::redirect(preg_replace('/&pn=[^&]*/', '', \Environment::get('request')));
+        }
+
+        $intNode = $objSession->get($strKey);
+
+        if ($intNode < 1)
+        {
+            return;
+        }
+
+        $arrIds   = array();
+        $arrLinks = array();
+        $objUser  = \BackendUser::getInstance();
+
+        // Generate breadcrumb trail
+        if ($intNode)
+        {
+            $intId = $intNode;
+            $objDatabase = \Database::getInstance();
+
+            do
+            {
+                $objSection = $objDatabase->prepare("SELECT * FROM tl_theme_section WHERE id=?")
+                    ->limit(1)
+                    ->execute($intId);
+
+                if ($objSection->numRows < 1)
+                {
+                    // Currently selected page does not exist
+                    if ($intId == $intNode)
+                    {
+                        $objSession->set($strKey, 0);
+
+                        return;
+                    }
+
+                    break;
+                }
+
+                $arrIds[] = $intId;
+
+                // No link for the active page
+                if ($objSection->id == $intNode)
+                {
+                    $arrLinks[] = \Backend::addPageIcon($objSection->row(), '', null, '', true) . ' ' . $objSection->title;
+                }
+                else
+                {
+                    $arrLinks[] = \Backend::addPageIcon($objSection->row(), '', null, '', true) . ' <a href="' . \Backend::addToUrl('pn='.$objSection->id) . '" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['selectNode']).'">' . $objSection->title . '</a>';
+                }
+
+
+                $intId = $objSection->pid;
+            }
+            while ($intId > 0);
+        }
+
+        // Limit tree
+        $GLOBALS['TL_DCA']['tl_theme_section']['list']['sorting']['root'] = array($intNode);
+        print_r($GLOBALS['TL_DCA']['tl_theme_section']['list']['sorting']['root']);
+        // Add root link
+        $arrLinks[] = \Image::getHtml('pagemounts.svg') . ' <a href="' . \Backend::addToUrl('pn=0') . '" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['selectAllNodes']).'">' . $GLOBALS['TL_LANG']['MSC']['filterAll'] . '</a>';
+        $arrLinks = array_reverse($arrLinks);
+
+        // Insert breadcrumb menu
+        $GLOBALS['TL_DCA']['tl_theme_section']['list']['sorting']['breadcrumb'] .= '
+
+<ul id="tl_breadcrumb">
+  <li>' . implode(' › </li><li>', $arrLinks) . '</li>
+</ul>';
     }
 }
