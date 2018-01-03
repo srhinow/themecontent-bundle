@@ -79,11 +79,11 @@ class InsertTagsListener
         /** @var ThemeSectionArticleModel $adapter */
         $adapter = $this->framework->getAdapter(ThemeSectionArticleModel::class);
 
-        if (null === ($article = $adapter->findThemeArticleByIdOrAlias($idOrAlias))) {
+        if (null === ($article = $adapter->findByIdOrAlias($idOrAlias))) {
             return '';
         }
 
-        return $this->generateReplacement($article, $insertTag);
+//        return $this->generateReplacement($article, $insertTag);
     }
 
     /**
@@ -94,37 +94,70 @@ class InsertTagsListener
      *
      * @return string
      */
-    private function generateReplacement(NewsModel $news, $insertTag)
-    {
-        /** @var News $adapter */
-        $adapter = $this->framework->getAdapter(News::class);
-
-        switch ($insertTag) {
-            case 'news':
-                return sprintf(
-                    '<a href="%s" title="%s">%s</a>',
-                    $adapter->generateNewsUrl($news),
-                    StringUtil::specialchars($news->headline),
-                    $news->headline
-                );
-
-            case 'news_open':
-                return sprintf(
-                    '<a href="%s" title="%s">',
-                    $adapter->generateNewsUrl($news),
-                    StringUtil::specialchars($news->headline)
-                );
-
-            case 'news_url':
-                return $adapter->generateNewsUrl($news);
-
-            case 'news_title':
-                return StringUtil::specialchars($news->headline);
-
-            case 'news_teaser':
-                return StringUtil::toHtml5($news->teaser);
-        }
-
-        return '';
-    }
+//    private function generateReplacement(NewsModel $news, $insertTag)
+//    {
+//        /** @var News $adapter */
+//        $adapter = $this->framework->getAdapter(News::class);
+//
+//        switch ($insertTag) {
+//            case 'news':
+//                return sprintf(
+//                    '<a href="%s" title="%s">%s</a>',
+//                    $adapter->generateNewsUrl($news),
+//                    StringUtil::specialchars($news->headline),
+//                    $news->headline
+//                );
+//
+//            case 'news_open':
+//                return sprintf(
+//                    '<a href="%s" title="%s">',
+//                    $adapter->generateNewsUrl($news),
+//                    StringUtil::specialchars($news->headline)
+//                );
+//
+//            case 'news_url':
+//                return $adapter->generateNewsUrl($news);
+//
+//            case 'news_title':
+//                return StringUtil::specialchars($news->headline);
+//
+//            case 'news_teaser':
+//                return StringUtil::toHtml5($news->teaser);
+//        }
+//
+//        return '';
+//    }
+//   private function generateReplacement(NewsModel $news, $insertTag)
+//    {
+//        /** @var News $adapter */
+//        $adapter = $this->framework->getAdapter(News::class);
+//
+//        switch ($insertTag) {
+//            case 'news':
+//                return sprintf(
+//                    '<a href="%s" title="%s">%s</a>',
+//                    $adapter->generateNewsUrl($news),
+//                    StringUtil::specialchars($news->headline),
+//                    $news->headline
+//                );
+//
+//            case 'news_open':
+//                return sprintf(
+//                    '<a href="%s" title="%s">',
+//                    $adapter->generateNewsUrl($news),
+//                    StringUtil::specialchars($news->headline)
+//                );
+//
+//            case 'news_url':
+//                return $adapter->generateNewsUrl($news);
+//
+//            case 'news_title':
+//                return StringUtil::specialchars($news->headline);
+//
+//            case 'news_teaser':
+//                return StringUtil::toHtml5($news->teaser);
+//        }
+//
+//        return '';
+//    }
 }

@@ -10,7 +10,7 @@
  */
 
 
-class ThemeSectionsModel extends \Contao\Model
+class ThemeSectionsModel extends \Model
 {
     /**
      * Table name

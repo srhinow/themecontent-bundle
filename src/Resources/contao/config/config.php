@@ -28,5 +28,11 @@ array_insert($GLOBALS['BE_MOD']['design'], 1, array
 $GLOBALS['TL_PERMISSIONS'][] = 'themecontents';
 $GLOBALS['TL_PERMISSIONS'][] = 'themecontentp';
 
+/*
+ * Models
+ */
+$GLOBALS['TL_MODELS']['tl_theme_section_article'] = \Srhinow\ThemeSectionArticleModel::class;
+
+
 /** Hooks */
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('srhinow_themecontent.listener.insert_tags', 'onReplaceInsertTags');
