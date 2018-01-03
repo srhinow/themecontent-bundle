@@ -228,7 +228,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['dateFormat'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('helpwizard'=>true, 'decodeEntities'=>true, 'tl_class'=>'w50'),
             'explanation'             => 'dateFormat',
@@ -238,7 +237,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['timeFormat'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('decodeEntities'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -247,7 +245,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['datimFormat'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('decodeEntities'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -272,7 +269,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['protected'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('submitOnChange'=>true),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -281,7 +277,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['groups'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'foreignKey'              => 'tl_member_group.name',
             'eval'                    => array('mandatory'=>true, 'multiple'=>true),
@@ -313,7 +308,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['cache'],
             'default'                 => 0,
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'select',
             'options'                 => array(0, 5, 15, 30, 60, 300, 900, 1800, 3600, 10800, 21600, 43200, 86400, 259200, 604800, 2592000),
             'reference'               => &$GLOBALS['TL_LANG']['CACHE'],
@@ -325,7 +319,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['clientCache'],
             'default'                 => 0,
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'select',
             'options'                 => array(0, 5, 15, 30, 60, 300, 900, 1800, 3600, 10800, 21600, 43200, 86400, 259200, 604800, 2592000),
             'reference'               => &$GLOBALS['TL_LANG']['CACHE'],
@@ -344,7 +337,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['cuser'],
             'default'                 => \intval(Config::get('defaultUser')),
-            'search'                  => true,
             'exclude'                 => true,
             'inputType'               => 'select',
             'foreignKey'              => 'tl_user.name',
@@ -356,7 +348,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['cgroup'],
             'default'                 => \intval(Config::get('defaultGroup')),
-            'search'                  => true,
             'exclude'                 => true,
             'inputType'               => 'select',
             'foreignKey'              => 'tl_user_group.name',
@@ -377,7 +368,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['noSearch'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'sql'                     => "char(1) NOT NULL default ''"
         ),
@@ -385,7 +375,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['cssClass'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -406,7 +395,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_theme_section']['guests'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
