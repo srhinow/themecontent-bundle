@@ -12,7 +12,7 @@ namespace Srhinow\ThemecontentBundle\EventListener;
 
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Srhinow\ThemeSectionArticleModel;
-use Contao\StringUtil;
+use Srhinow\ModuleThemeArticle;
 
 /**
  * Handles insert tags for news.
@@ -31,7 +31,7 @@ class InsertTagsListener
      */
     private $supportedTags = [
         'insert_theme_article',
-        'insert_theme_content',
+//        'insert_theme_content',
     ];
 
     /**
@@ -65,7 +65,7 @@ class InsertTagsListener
 
 
     /**
-     * Replaces a news-related insert tag.
+     * Replaces a THEME-ARTICLE-related insert tag.
      *
      * @param string $insertTag
      * @param string $idOrAlias
@@ -79,85 +79,18 @@ class InsertTagsListener
         /** @var ThemeSectionArticleModel $adapter */
         $adapter = $this->framework->getAdapter(ThemeSectionArticleModel::class);
 
-        if (null === ($article = $adapter->findByIdOrAlias($idOrAlias))) {
+        if (null === ($objRow = $adapter->findByIdOrAlias($idOrAlias))) {
             return '';
         }
 
-//        return $this->generateReplacement($article, $insertTag);
+        switch($insertTag) {
+            case 'insert_theme_article':
+                $objThemeArticle = new ModuleThemeArticle($objRow);
+                return $objThemeArticle->generate(true);
+                break;
+        }
+
+        return '';
     }
 
-    /**
-     * Generates the replacement string.
-     *
-     * @param NewsModel $news
-     * @param string    $insertTag
-     *
-     * @return string
-     */
-//    private function generateReplacement(NewsModel $news, $insertTag)
-//    {
-//        /** @var News $adapter */
-//        $adapter = $this->framework->getAdapter(News::class);
-//
-//        switch ($insertTag) {
-//            case 'news':
-//                return sprintf(
-//                    '<a href="%s" title="%s">%s</a>',
-//                    $adapter->generateNewsUrl($news),
-//                    StringUtil::specialchars($news->headline),
-//                    $news->headline
-//                );
-//
-//            case 'news_open':
-//                return sprintf(
-//                    '<a href="%s" title="%s">',
-//                    $adapter->generateNewsUrl($news),
-//                    StringUtil::specialchars($news->headline)
-//                );
-//
-//            case 'news_url':
-//                return $adapter->generateNewsUrl($news);
-//
-//            case 'news_title':
-//                return StringUtil::specialchars($news->headline);
-//
-//            case 'news_teaser':
-//                return StringUtil::toHtml5($news->teaser);
-//        }
-//
-//        return '';
-//    }
-//   private function generateReplacement(NewsModel $news, $insertTag)
-//    {
-//        /** @var News $adapter */
-//        $adapter = $this->framework->getAdapter(News::class);
-//
-//        switch ($insertTag) {
-//            case 'news':
-//                return sprintf(
-//                    '<a href="%s" title="%s">%s</a>',
-//                    $adapter->generateNewsUrl($news),
-//                    StringUtil::specialchars($news->headline),
-//                    $news->headline
-//                );
-//
-//            case 'news_open':
-//                return sprintf(
-//                    '<a href="%s" title="%s">',
-//                    $adapter->generateNewsUrl($news),
-//                    StringUtil::specialchars($news->headline)
-//                );
-//
-//            case 'news_url':
-//                return $adapter->generateNewsUrl($news);
-//
-//            case 'news_title':
-//                return StringUtil::specialchars($news->headline);
-//
-//            case 'news_teaser':
-//                return StringUtil::toHtml5($news->teaser);
-//        }
-//
-//        return '';
-//    }
 }
