@@ -31,11 +31,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             array('tl_theme_section', 'checkPermission')
         ),
-        'onsubmit_callback' => array
-        (
-            array('tl_theme_section', 'storeDateAdded')
-        ),
-
         'sql' => array
         (
             'keys' => array
@@ -685,31 +680,6 @@ class tl_theme_section extends Backend
     }
 
     /**
-     * Store the date when the account has been added
-     *
-     * @param DataContainer $dc
-     */
-    public function storeDateAdded($dc)
-    {
-        // Front end call
-        if (!$dc instanceof DataContainer)
-        {
-            return;
-        }
-
-        // Return if there is no active record (override all)
-        if (!$dc->activeRecord || $dc->activeRecord->dateAdded > 0)
-        {
-            return;
-        }
-
-        $time = time();
-
-        $this->Database->prepare("UPDATE tl_teaser SET dateAdded=? WHERE id=?")
-            ->execute($time, $dc->id);
-    }
-
-    /**
      * Add the breadcrumb menu
      */
     public function addBreadcrumb()
@@ -722,13 +692,11 @@ class tl_theme_section extends Backend
      *
      * @param string $strKey
      *
-     * @throws AccessDeniedException
      * @throws \RuntimeException
      */
     public static function addSectionBreadcrumb($strKey='tl_theme_section_note')
     {
 
-        /** @var AttributeBagInterface $objSession */
         $objSession = \System::getContainer()->get('session')->getBag('contao_backend');
 
         // Set a new node
@@ -753,7 +721,6 @@ class tl_theme_section extends Backend
 
         $arrIds   = array();
         $arrLinks = array();
-        $objUser  = \BackendUser::getInstance();
 
         // Generate breadcrumb trail
         if ($intNode)
