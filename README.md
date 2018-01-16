@@ -12,7 +12,7 @@ Diese werden durch
 
 * Theme-Inhalte
   * Bereiche ("tl_theme_section" wie Pages), 
-  * Bereich-Artikel ("tl_section_article" Baumstruktur nach Bereiche wie "Artikel" mit ptable "tl_theme_section")
+  * Bereich-Artikel ("tl_theme_section_article" Baumstruktur nach Bereiche wie "Artikel" mit ptable "tl_theme_section")
     * Inhaltselemente ("tl_content" mit ptable "tl_theme_section_article")
     
 verwaltet.
