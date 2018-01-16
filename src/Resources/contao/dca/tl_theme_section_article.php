@@ -1,16 +1,15 @@
 <?php
 
 /**
- * PHP version > 7.1
- * @copyright  Sven Rhinow Webentwicklung 2017 <http://www.sr-tag.de>
- * @author     Sven Rhinow
- * @package    ledproducts-bundle
+ * PHP version >= 7.1
+ * @copyright  Sven Rhinow 2018
+ * @author     Sven Rhinow <sven@sr-tag.de>
+ * @package    themecontent-bundle
  * @license    LGPL
- * @filesource
  */
 
 /**
- * Load class tl_page
+ * Load class tl_theme_section
  */
 $this->loadDataContainer('tl_theme_section');
 
@@ -32,7 +31,6 @@ $GLOBALS['TL_DCA']['tl_theme_section_article'] = array
         'onload_callback' => array
         (
             array('tl_theme_section_article', 'checkPermission'),
-//            array('tl_theme_section_article', 'addCustomLayoutSectionReferences'),
             array('tl_theme_section', 'addBreadcrumb')
         ),
         'sql' => array
@@ -69,7 +67,6 @@ $GLOBALS['TL_DCA']['tl_theme_section_article'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_theme_section_article']['back_to_sectione_overview'],
                 'href'                => 'do=theme_content&amp;table=',
                 'icon'                => 'back.svg',
-//                'button_callback'     => array('tl_theme', 'editCss')
             ),
             'toggleNodes' => array
             (
@@ -523,12 +520,11 @@ if(class_exists('\\esit\\ctscore\\classes\\contao\\helper\\OptionHelper'))
         'sql'                     => "varchar(255) NOT NULL default ''"
     );
 }
+
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
  */
-class tl_theme_section_article extends Backend
+class tl_theme_section_article extends \Contao\Backend
 {
 
     /**

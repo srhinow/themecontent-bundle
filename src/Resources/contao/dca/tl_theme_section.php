@@ -2,16 +2,11 @@
 
 /**
  *
- * @copyright  Sven Rhinow 2015
+ * @copyright  Sven Rhinow 2018
  * @author     Sven Rhinow <sven@sr-tag.de>
- * @package    teaser-manager
+ * @package    themecontent-bundle
  * @license    LGPL
  */
-
-/**
- * Load class tl_page
- */
-$this->loadDataContainer('tl_page');
 
 
 /**
@@ -49,8 +44,6 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
         (
             'mode'                    => 5,
             'icon'                    => 'pagemounts.svg',
-//            'fields'                  => array('title'),
-//            'flag'                    => 1,
             'panelLayout'             => 'filter;search'
         ),
         'label' => array
