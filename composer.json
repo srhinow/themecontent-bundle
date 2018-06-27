@@ -1,6 +1,6 @@
 {
   "name": "srhinow/themecontent-bundle",
-  "description": "für themes benötigte Inhalte nicht mehr als Fakeseiten sondern sauber getrennt in Contao verwalten.",
+  "description": "für Themes benötigte Inhalte nicht mehr als Fakeseiten sondern sauber getrennt in Contao verwalten.",
   "keywords": ["contao", "theme", "content", "layout", "elements"],
   "type": "contao-bundle",
   "homepage": "https://github.com/srhinow/themecontent-bundle",
@@ -19,7 +19,9 @@
   },
   "require": {
     "php": ">=7.1",
-    "contao/core-bundle": "^4.4"
+    "contao/core-bundle": "^4.4",
+    "menatwork/contao-multicolumnwizard":"^3.3",
+    "heimrichhannot/tags-bundle":"^1.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.3",
