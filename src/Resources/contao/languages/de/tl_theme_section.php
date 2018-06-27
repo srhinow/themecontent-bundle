@@ -1,11 +1,11 @@
 <?php
 /**
- * TL_ROOT/vendor/srhinow/ledproducts-bundle/src/Recources/contao/modules/languages/de/tl_theme_section.php
+ * TL_ROOT/vendor/srhinow/themecontent-bundle/src/Recources/contao/modules/languages/de/tl_theme_section.php
  *
- * Contao extension: ledproducts-bundle
+ * Contao extension: themecontent-bundle
  * Deutsch translation file
  *
- * Copyright  Sven Rhinow Webentwicklung 2017 <http://www.sr-tag.de>
+ * Copyright  Sven Rhinow Webentwicklung 2018 <http://www.sr-tag.de>
  * Author     Sven Rhinow
  * @license    LGPL-3.0+
  * Translator: Sven Rhinow (sr-tag)
@@ -21,8 +21,6 @@ $GLOBALS['TL_LANG']['tl_theme_section']['alias']['0'] = "Alias";
 $GLOBALS['TL_LANG']['tl_theme_section']['alias']['1'] = "Alias, um auf die Kategorie verweisen zu können.";
 $GLOBALS['TL_LANG']['tl_theme_section']['description']['0'] = "Beschreibung";
 $GLOBALS['TL_LANG']['tl_theme_section']['description']['1'] = "";
-$GLOBALS['TL_LANG']['tl_theme_section']['seriecatitems']['0'] = "Standard Serien Kategorien";
-$GLOBALS['TL_LANG']['tl_theme_section']['seriecatitems']['1'] = "Hier können sie die Standard Serien-Kategorien anlegen.";
 $GLOBALS['TL_LANG']['tl_theme_section']['addImage']['0'] = "Bild hinzufügen";
 $GLOBALS['TL_LANG']['tl_theme_section']['addImage']['1'] = "";
 $GLOBALS['TL_LANG']['tl_theme_section']['image']['0'] = "Bild";

@@ -8,9 +8,14 @@
  * @license    LGPL
  */
 
+/**
+ * Load class tl_page
+ */
+$this->loadDataContainer('tl_page');
+
 
 /**
- * Table tl_teaser
+ * Table tl_theme_section
  */
 $GLOBALS['TL_DCA']['tl_theme_section'] = array
 (
@@ -760,6 +765,7 @@ class tl_theme_section extends Backend
 
         // Limit tree
         $GLOBALS['TL_DCA']['tl_theme_section']['list']['sorting']['root'] = array($intNode);
+//        print_r($GLOBALS['TL_DCA']['tl_theme_section']['list']['sorting']['root']);
 
         // Add root link
         $arrLinks[] = \Image::getHtml('pagemounts.svg') . ' <a href="' . \Backend::addToUrl('pn=0') . '" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['selectAllNodes']).'">' . $GLOBALS['TL_LANG']['MSC']['filterAll'] . '</a>';

@@ -1,14 +1,15 @@
 <?php
 /**
- *
- * @copyright  Sven Rhinow 2015
+ * PHP version >= 7.1
+ * @copyright  Sven Rhinow 2018
  * @author     Sven Rhinow <sven@sr-tag.de>
- * @package    teaser-manager
+ * @package    themecontent-bundle
  * @license    LGPL
+ * @filesource
  */
 
 /**
- * Dynamically add the permission check and parent table
+ * Dynamically add the parent table
  */
 if (Input::get('do') == 'theme_content')
 {
