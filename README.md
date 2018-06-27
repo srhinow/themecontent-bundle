@@ -1,7 +1,5 @@
 # Theme-Content (Contao 4.4-Modul)
 
-*erstellt wird es als ein nebenprojet zu einem Auftrag
-
 Hiermit werden im Contao-Backend für z.B. Footer oder Header-Inhaltselemente, nicht mehr wie sonst üblich Fake-Seitenbäume angelegt, sondern eine eigene Struktur geschaffen. 
 
 ### Meine Hoffung: 
