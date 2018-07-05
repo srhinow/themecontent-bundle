@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TL_ROOT/vendor/srhinow/themecontent-bundle/src/Recources/contao/modules/languages/en/modules.php
+ * TL_ROOT/vendor/srhinow/themecontent-bundle/src/Recources/contao/modules/languages/en/tl_theme_section.php
  *
  * Contao extension: themecontent-bundle
  * English translation file
@@ -12,7 +12,4 @@
  * Translator: Fritz Michael Gschwantner <https://github.com/fritzmg>
  */
 
-/**
- * Back end modules
- */
-$GLOBALS['TL_LANG']['MOD']['theme_content'] = array('Theme content', '');
+$GLOBALS['TL_LANG']['tl_content']['themeArticle'] = ['Referenced theme article', 'Please choose the theme article you want to insert.'];

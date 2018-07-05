@@ -12,7 +12,4 @@
  * Translator: Fritz Michael Gschwantner <https://github.com/fritzmg>
  */
 
-/**
- * Back end modules
- */
-$GLOBALS['TL_LANG']['MOD']['theme_content'] = array('Theme content', '');
+$GLOBALS['TL_LANG']['CTE']['themeArticle'] = ['Theme article', 'Includes a theme article.'];

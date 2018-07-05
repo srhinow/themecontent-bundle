@@ -4,3 +4,9 @@ services:
         arguments:
             - "@contao.framework"
         public: true
+    srhinow_themecontent.listener.dca:
+        class: Srhinow\ThemecontentBundle\EventListener\DcaListener
+        arguments:
+            - "@contao.framework"
+            - "@database_connection"
+        public: true

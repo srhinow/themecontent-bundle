@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TL_ROOT/vendor/srhinow/themecontent-bundle/src/Recources/contao/modules/languages/de/tl_theme_section_article.php
+ * TL_ROOT/vendor/srhinow/themecontent-bundle/src/Recources/contao/modules/languages/en/tl_theme_section_article.php
  *
  * Contao extension: themecontent-bundle
  * English translation file
