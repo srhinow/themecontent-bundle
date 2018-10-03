@@ -88,6 +88,13 @@ $GLOBALS['TL_DCA']['tl_theme_section'] = array
                 'href'                => 'act=copy',
                 'icon'                => 'copy.gif'
             ),
+            'cut' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_page']['cut'],
+                'href'                => 'act=paste&amp;mode=cut',
+                'icon'                => 'cut.svg',
+                'attributes'          => 'onclick="Backend.getScrollOffset()"',
+            ),
             'delete' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_theme_section']['delete'],
