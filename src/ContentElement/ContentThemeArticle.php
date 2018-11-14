@@ -32,7 +32,7 @@ class ContentThemeArticle extends ContentElement
 	{
 		$objRow = ThemeSectionArticleModel::findById($this->themeArticle);
 
-		if (!static::isVisibleElement($objRow))
+		if (null === $objRow || !static::isVisibleElement($objRow))
 		{
 			return '';
 		}
