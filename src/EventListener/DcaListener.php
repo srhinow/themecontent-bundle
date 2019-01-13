@@ -48,15 +48,21 @@ class DcaListener
         $this->db = $db;
     }
 
-
     public function onOptionsThemeArticle(DataContainer $dc)
     {
         $this->framework->initialize();
 
-        $arrPids = array();
-        $arrAlias = array();
+        $aliases = [];
+        $query = null;
 
-        $query = $this->db->executeQuery("SELECT a.id, a.pid, a.title, a.inColumn, p.title AS parent FROM tl_theme_section_article a LEFT JOIN tl_theme_section p ON p.id=a.pid WHERE a.id!=(SELECT pid FROM tl_content WHERE id=?) ORDER BY parent, a.sorting", [$dc->id]);
+        if ('tl_content' === $dc->table)
+        {
+            $query = $this->db->executeQuery("SELECT a.id, a.pid, a.title, a.inColumn, p.title AS parent FROM tl_theme_section_article a LEFT JOIN tl_theme_section p ON p.id=a.pid WHERE a.id!=(SELECT pid FROM tl_content WHERE id=?) ORDER BY parent, a.sorting", [$dc->id]);
+        }
+        else
+        {
+            $query = $this->db->executeQuery("SELECT a.id, a.pid, a.title, a.inColumn, p.title AS parent FROM tl_theme_section_article a LEFT JOIN tl_theme_section p ON p.id=a.pid ORDER BY parent, a.sorting");
+        }
 
         if ($query->rowCount())
         {
@@ -65,11 +71,11 @@ class DcaListener
             foreach ($query->fetchAll() as $result)
             {
                 $key = $result['parent'];
-                $arrAlias[$key][$result['id']] = $result['title'] . ' (ID ' . $result['id'] . ')';
+                $aliases[$key][$result['id']] = $result['title'] . ' (ID ' . $result['id'] . ')';
             }
         }
 
-        return $arrAlias;
+        return $aliases;
     }
 
     public function onEditThemeArticle(DataContainer $dc)
