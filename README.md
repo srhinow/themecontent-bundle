@@ -6,7 +6,8 @@ Hiermit werden im Contao-Backend für z.B. Footer oder Header-Inhaltselemente, n
 Wenn alle Theme-Anbieter auf diese Struktur zurückgreifen würden, dann könnte man Demo und Themes installieren, ohne vorhandene Inhaltsstrukturen platt machen zu müssen.
 Inhaltselemente werden weiterhin auch in der tl_content abgelegt. So kann wie gewohnt z.B. mit Inserttags {{insert_content::ID|ALIAS}} darauf zugegriffen werden und bei einem Import/Export kann gezielt nach ptable = 'tl_theme_section_article'  gefiltert werden.
 
-Statt den insert-Tag {{insert_article::ID|ALIAS}} wird der {{insert_theme_article::ID|ALIAS}} verwendet
+Für Theme-Artikel wird der {{insert_theme_article::ID|ALIAS}} verwendet.
+Für einzelne Conotent-Elemente aus dem Theme-Inhalte-Bereich kann sowohl {{insert_content::ID|ALIAS}} als auch {{insert_theme_content::ID|ALIAS}} verwendet werden.
 
 Als Hook zum Überschreiben der Theme-Artikel-Ausgabe, kann $GLOBALS['TL_HOOKS']['compileThemeArticle'] wie bei $GLOBALS['TL_HOOKS']['compileArticle'] verwendet werden.
 

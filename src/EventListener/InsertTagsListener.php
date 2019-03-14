@@ -10,6 +10,8 @@
 
 namespace Srhinow\ThemecontentBundle\EventListener;
 
+use Contao\ContentModel;
+use Contao\Controller;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Srhinow\ThemeSectionArticleModel;
 use Srhinow\ModuleThemeArticle;
@@ -31,7 +33,7 @@ class InsertTagsListener
      */
     private $supportedTags = [
         'insert_theme_article',
-//        'insert_theme_content',
+        'insert_theme_content',
     ];
 
     /**
@@ -57,7 +59,15 @@ class InsertTagsListener
         $key = strtolower($elements[0]);
 
         if (\in_array($key, $this->supportedTags, true)) {
-            return $this->replaceThemeArticleInsertTags($key, $elements[1]);
+            switch($key) {
+                case 'insert_theme_article':
+                    return $this->replaceThemeArticleInsertTags($elements[1]);
+                    break;
+                case 'insert_theme_content':
+                    return $this->replaceThemeContentInsertTags($elements[1]);
+                    break;
+            }
+
         }
 
         return false;
@@ -67,12 +77,11 @@ class InsertTagsListener
     /**
      * Replaces a THEME-ARTICLE-related insert tag.
      *
-     * @param string $insertTag
      * @param string $idOrAlias
      *
      * @return string
      */
-    private function replaceThemeArticleInsertTags($insertTag, $idOrAlias)
+    private function replaceThemeArticleInsertTags($idOrAlias)
     {
         $this->framework->initialize();
 
@@ -83,14 +92,29 @@ class InsertTagsListener
             return '';
         }
 
-        switch($insertTag) {
-            case 'insert_theme_article':
-                $objThemeArticle = new ModuleThemeArticle($objRow);
-                return $objThemeArticle->generate(true);
-                break;
+        $objThemeArticle = new ModuleThemeArticle($objRow);
+        return $objThemeArticle->generate(true);
+    }
+
+    /**
+     * Replaces a THEME-CONTENT-related insert tag.
+     *
+     * @param string $idOrAlias
+     *
+     * @return string
+     */
+    private function replaceThemeContentInsertTags($idOrAlias)
+    {
+        $this->framework->initialize();
+
+        /** @var ThemeSectionArticleModel $adapter */
+        $adapter = $this->framework->getAdapter(ContentModel::class);
+
+        if (null === ($objRow = $adapter->findByIdOrAlias($idOrAlias))) {
+            return '';
         }
 
-        return '';
+        return Controller::getContentElement($objRow->id);
     }
 
 }
